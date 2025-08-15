@@ -6475,7 +6475,7 @@ local targetinfoblurobj = addBlur(targetinfobkg)
 targetinfoblurobj.Visible = false
 addCorner(targetinfobkg)
 local targetinfoshot = Instance.new('ImageLabel')
-targetinfoshot.Size = UDim2.fromOffset(35, 35)
+targetinfoshot.Size = UDim2.fromOffset(26, 27)
 targetinfoshot.Position = UDim2.fromOffset(19, 17)
 targetinfoshot.BackgroundColor3 = uipallet.Main
 targetinfoshot.Image = 'rbxthumb://type=AvatarHeadShot&id=1&w=420&h=420'
@@ -6519,7 +6519,7 @@ targetinfoname.Parent = targetinfobkg
 local targetinfohealthbkg = Instance.new('Frame')
 targetinfohealthbkg.Name = 'HealthBKG'
 targetinfohealthbkg.Size = UDim2.fromOffset(200, 9)
-targetinfohealthbkg.Position = UDim2.fromOffset(20, 65)
+targetinfohealthbkg.Position = UDim2.fromOffset(20, 56)
 targetinfohealthbkg.BackgroundColor3 = uipallet.Main
 targetinfohealthbkg.BorderSizePixel = 0
 targetinfohealthbkg.Parent = targetinfobkg
