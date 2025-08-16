@@ -3291,77 +3291,9 @@ runFunction(function()
 	})
 end)
 
-runFunction(function()
-    local lightingService = game:GetService("Lighting")
-    local skySettings = {}
-    local skyChanged = false
-    local NightSky = {Connections = {}, Enabled = false}
-    
-    NightSky = vape.Categories.Render:CreateModule({
-        Name = "NightSky",
-        Function = function(callback)
-            if callback then
-                local skybox = Instance.new("Sky")
-                skybox.SkyboxBk = "http://www.roblox.com/Asset/?ID=12064107"
-                skybox.SkyboxDn = "http://www.roblox.com/Asset/?ID=12064152"
-                skybox.SkyboxFt = "http://www.roblox.com/Asset/?ID=12064121"
-                skybox.SkyboxLf = "http://www.roblox.com/Asset/?ID=12063984"
-                skybox.SkyboxRt = "http://www.roblox.com/Asset/?ID=12064115"
-                skybox.SkyboxUp = "http://www.roblox.com/Asset/?ID=12064131"
-                skybox.SunTextureId = "0"
-                skybox.Parent = lightingService
-                table.insert(NightSky.Connections, skybox)
-            else
-                for _, sky in pairs(NightSky.Connections) do
-                    if sky and sky.Parent then
-                        sky:Destroy()
-                    end
-                end
-                table.clear(NightSky.Connections)
-            end
-        end,
-        Tooltip = "Cool sky"
-    })
-end)
 
 
 
-
-runFunction(function()
-    local ChatModifier = {Connections = {}, Enabled = false}
-    local Players = game:GetService("Players")
-    local TextChatService = game:GetService("TextChatService")
-    local LocalPlayer = Players.LocalPlayer
-    local Tag = {
-        Color = "#919191",
-        Chattag = "[vector]"
-    }
-
-    ChatModifier = vape.Categories.Render:CreateModule({
-        Name = "ChatTag",
-        Function = function(callback)
-            if callback then
-                local conn = TextChatService.OnIncomingMessage:Connect(function(message)
-                    local MessageProperties = Instance.new("TextChatMessageProperties")
-                    local Player = Players:GetPlayerByUserId(message.TextSource.UserId)
-                    if Player and Player.Name == LocalPlayer.Name then
-                        MessageProperties.PrefixText = '<font color="' .. Tag.Color .. '">' .. Tag.Chattag .. '</font> ' .. (message.PrefixText or "")
-                    end
-                    return MessageProperties
-                end)
-                table.insert(ChatModifier.Connections, conn)
-            else
-                for _, connection in pairs(ChatModifier.Connections) do
-                    if connection.Connected then
-                        connection:Disconnect()
-                    end
-                end
-                table.clear(ChatModifier.Connections)
-            end
-        end,
-        Tooltip = "3"
-    })
-end)
 	
 run(function()
 	local Health
